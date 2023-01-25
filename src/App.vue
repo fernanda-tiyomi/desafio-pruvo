@@ -3,29 +3,36 @@
     <nav>
       <div>
       
-      <h1>Asteroides</h1>
+      <h1> ☄ Asteroides ☄</h1>
       </div>
     </nav>
 
     <div class="container">
-    
+
+
       <div id='busca'>
         <input v-model="inputValue" type="text" placeholder="Digite o que você procura" />
-        <button @click="find">Ok</button>
+        <button @click="find"  id="btnBusca">Ok</button>
+      </div>
+    
+        
+
+      <div class="nomes">
+        
+        <table>
+        
+         
+          <ul class="container-lista">
+            <li v-for="(asteroide, index) in asteroides" :key="index" class="lista">
+              {{ asteroide.name }}
+            </li>
+          </ul>
+          
+        
+    
+        </table>
       </div>
         
-      <table>
-        
-          <tr>
-            <ul class="container-lista">
-              <li v-for="(asteroide, index) in asteroides" :key="index" class="lista">
-                {{ asteroide.name }}
-              </li>
-            </ul>
-            
-          </tr>
-      
-      </table>
     </div>
   </div>
 </template>
@@ -84,12 +91,24 @@ h1{
   font-size: 50px;
 }
 
+.nomes{
+  display: flex;
+  justify-content: center;
+  
+
+  
+}
+
+#busca{
+  display: flex;
+  justify-content: center;
+}
+
 .lista{
 
   border: 1px solid rgb(74, 6, 105);
   margin: 5px;
   margin-bottom: 5px;
-
 
 }
 .container-lista{
@@ -97,12 +116,10 @@ h1{
   justify-content: center;
 }
 
-#busca {
-  margin-left: 50px;
-}
+
   
-    #btnBusca:hover {
-    background:#c9f5f5; 
+#btnBusca:hover {
+    background:#0dd4d4; 
     }
   
 
