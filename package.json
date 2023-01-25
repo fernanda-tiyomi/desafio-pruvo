@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^1.2.4",
+    "collect.js": "^4.34.3",
     "core-js": "^3.8.3",
     "vue": "^2.6.14"
   },

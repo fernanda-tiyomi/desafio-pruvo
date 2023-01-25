@@ -1,63 +1,109 @@
 <template>
   <div id="app">
-
     <nav>
-      <div class="nav-wrapper blue darken-1">
-        <a href="#" class="brand-logo center">ASTEROIDES</a>
+      <div>
+      
+      <h1>Asteroides</h1>
       </div>
     </nav>
 
     <div class="container">
-
-     
-
+    
+      <div id='busca'>
+        <input v-model="inputValue" type="text" placeholder="Digite o que você procura" />
+        <button @click="find">Ok</button>
+      </div>
+        
       <table>
-
-
-        <tbody>
-
+        
           <tr>
-
-            <td>{{asteroides}}</td>
+            <ul class="container-lista">
+              <li v-for="(asteroide, index) in asteroides" :key="index" class="lista">
+                {{ asteroide.name }}
+              </li>
+            </ul>
             
-            <td>
-              <button class="waves-effect btn-small blue darken-1"><i class="material-icons">create</i></button>
-              <button class="waves-effect btn-small red darken-1"><i class="material-icons">delete_sweep</i></button>
-            </td>
-
           </tr>
-
-        </tbody>
       
       </table>
-
     </div>
-
   </div>
 </template>
 
 <script>
-import Asteroides from './services/asteroides'
+import Asteroides from "./services/asteroides";
+import collect from 'collect.js'
 
-export default{
-
-data(){
-  return{
-    asteroides:[]
+export default {
+  data() {
+    return {
+      asteroides: [],
+      inputValue: ''
+    };
+  },
+  mounted() {
+    this.find()
+  },
+  methods:{
+    find () {
+      Asteroides.listar()
+        .then((resposta) => {
+          const dados = collect(resposta.data.near_earth_objects).toArray()
+          this.asteroides = collect(dados).collapse().all()
+          if (this.inputValue !== '' ) {
+            this.asteroides = this.asteroides.filter(item => item.name === this.inputValue)
+          }
+        })
+    }
+    /*
+    
+    {
+      key: [
+        [
+          {
+            name:
+          }
+        ]
+      ]
+    }
+    
+    */
   }
-},
-
-
-mounted(){
-  Asteroides.listar().then(resposta =>{
-    console.log(resposta.data.near_earth_objects)
-    this.asteroides = resposta.data.near_earth_objects
-   
-  })
-}
-}
+ 
+};
 </script>
 
 <style>
+#app{
+  background-color: rgb(221, 238, 253);
+}
+h1{
+  color: rgb(99, 4, 91);
+  text-align: center;
+  text-decoration: dashed;
+  font-size: 50px;
+}
+
+.lista{
+
+  border: 1px solid rgb(74, 6, 105);
+  margin: 5px;
+  margin-bottom: 5px;
+
+
+}
+.container-lista{
+  font-display: flex;
+  justify-content: center;
+}
+
+#busca {
+  margin-left: 50px;
+}
+  
+    #btnBusca:hover {
+    background:#c9f5f5; 
+    }
+  
 
 </style>
