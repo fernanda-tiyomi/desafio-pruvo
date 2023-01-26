@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    <nav>
-      <div>
+    
+   
       
-      <h1> ☄ Asteroides ☄</h1>
-      </div>
-    </nav>
+      
+        <primeiro-componente/>
+        <LifeCycle/>
+        <InfoPerson/>
+      
+    
+      
+    
 
     <div class="container">
 
@@ -40,14 +45,29 @@
 <script>
 import Asteroides from "./services/asteroides";
 import collect from 'collect.js'
+import PrimeiroComponente from "./components/PrimeiroComponente.vue";
+import LifeCycle from "./components/LifeCycle.vue";
+import InfoPerson from "./components/InfoPerson.vue"
+
 
 export default {
   data() {
     return {
       asteroides: [],
-      inputValue: ''
+      inputValue: '',
+     
     };
+
   },
+
+  components:{
+        PrimeiroComponente,
+        LifeCycle,
+        InfoPerson
+   
+      },
+
+
   mounted() {
     this.find()
   },
