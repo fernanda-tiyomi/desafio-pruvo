@@ -3,10 +3,13 @@
     
    
       
-      
+        <Header_fer/>
         <primeiro-componente/>
         <LifeCycle/>
         <InfoPerson/>
+        <Form_fer/>
+        <Pessoa_Fer/>
+        <Footer_fer/>
       
     
       
@@ -48,6 +51,10 @@ import collect from 'collect.js'
 import PrimeiroComponente from "./components/PrimeiroComponente.vue";
 import LifeCycle from "./components/LifeCycle.vue";
 import InfoPerson from "./components/InfoPerson.vue"
+import Pessoa_Fer from "./components/Pessoa_fer.vue"
+import Header_fer from "./components/Header_fer.vue"
+import Footer_fer from "./components/Footer_fer.vue"
+import Form_fer from "./components/Form_fer.vue"
 
 
 export default {
@@ -63,7 +70,11 @@ export default {
   components:{
         PrimeiroComponente,
         LifeCycle,
-        InfoPerson
+        InfoPerson,
+        Pessoa_Fer,
+        Header_fer,
+        Footer_fer,
+        Form_fer
    
       },
 
@@ -82,25 +93,15 @@ export default {
           }
         })
     }
-    /*
-    
-    {
-      key: [
-        [
-          {
-            name:
-          }
-        ]
-      ]
-    }
-    
-    */
+
   }
  
 };
 </script>
 
 <style>
+
+
 #app{
   background-color: rgb(221, 238, 253);
 }

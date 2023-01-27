@@ -15,15 +15,22 @@ export default{
     created(){
         setTimeout(()=>{
             this.nome='Boa tarde!!'
-        },2000)
+        },2000);
+        this.lifeCycle()
      
     },
 
     mounted(){
         setTimeout(()=>{
             this.nome='Boa noite!!'
-        },4000) 
+        },4000) ;
+        this.lifeCycle()
        
+    },
+    methods:{
+        lifeCycle(){
+            console.log("executou")
+        }
     }
 }
 

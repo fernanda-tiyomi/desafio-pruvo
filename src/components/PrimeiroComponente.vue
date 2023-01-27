@@ -4,6 +4,7 @@
   
       <h1>Asteroides</h1>
       <p>Meu nome é {{nome}}, sou {{cargo}} da empresa {{empresa}}</p>
+      <MultiplosEventos/>
    <div class="imagem">
     <img width="300px" src="../img/astro.jpg"/>
   </div> 
@@ -23,8 +24,13 @@
 </template>
 
 <script>
+import MultiplosEventos from "./MultiplosEventos"
+
 export default{
   name:"PrimeiroComponente",
+  components:{
+    MultiplosEventos
+  },
   data(){
     return {
       nome:'Fernanda',
